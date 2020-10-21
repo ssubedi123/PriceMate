@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:src="@drawable/pricemate"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:drawableLeft="@drawable/ic_email1"
+            android:background="@drawable/signupedit"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="    Email"
+            android:inputType="textEmailAddress"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/emailConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:drawableLeft="@drawable/ic_email1"
+            android:background="@drawable/signupedit"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="    Confirm Email"
+            android:inputType="textEmailAddress"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:drawableLeft="@drawable/ic_phone"
+            android:background="@drawable/signupedit"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="    Phone Number"
+            android:inputType="textEmailAddress"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/signupbtn"
+        android:text="Sign up"
+        android:id="@+id/sup"
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
