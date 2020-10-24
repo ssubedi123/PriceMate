@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "387694988928",
+    "firebase_url": "https://pricemates-f5df9.firebaseio.com",
+    "project_id": "pricemates-f5df9",
+    "storage_bucket": "pricemates-f5df9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387694988928:android:57a7013754cffa857e6065",
+        "android_client_info": {
+          "package_name": "com.example.pricemate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387694988928-iahl6cqao7ragkge0japrd5boamqjmcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARifLwVMt_alKe8D1XMiU5hxTVb6svAQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387694988928-iahl6cqao7ragkge0japrd5boamqjmcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
