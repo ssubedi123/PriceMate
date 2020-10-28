@@ -79,4 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+    public void shoppingCart(View view){
+        startActivity(new Intent(getApplicationContext(),ShoppingCart.class));
+    }
 }
