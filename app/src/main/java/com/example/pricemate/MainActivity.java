@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //onclick of an item being bought, it needs to be appended to current user's firestore document
+                //firebaseFirestore.collection("Users").document(user_id).set(data, {merge:true}) will probably look something like this
+                //require data but can use spoofed item ids to test.
                 Toast.makeText(MainActivity.this,"Item Bought",Toast.LENGTH_SHORT).show();
             }
         });
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    //could just change to public static and make a class that has all the FireAuth methods in one place...
     private void createSignInIntent() {
         // [START auth_fui_create_intent]
         // Choose authentication providers, Facebook and Twitter and special additional requirements
@@ -82,4 +86,5 @@ public class MainActivity extends AppCompatActivity {
     public void shoppingCart(View view){
         startActivity(new Intent(getApplicationContext(),ShoppingCart.class));
     }
+    //need to create methods that push from "buy" to the user's shopping cart on firestore,identifier for products?
 }
