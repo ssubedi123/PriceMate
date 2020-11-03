@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.pricemate)
+                .setLogo(R.drawable.mates)
                 .build();
 
         startActivityForResult(intent, RC_SIGN_IN);
