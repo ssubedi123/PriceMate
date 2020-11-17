@@ -1,24 +1,16 @@
 package com.example.pricemate;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
@@ -74,7 +66,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextSubmit(String query){
         //searchForItem(query);
         //Can include the API call functions here
-        Toast.makeText(this, "Searching for " + query , Toast.LENGTH_SHORT).show();
+        product SearchResult = new product(0,query, 0.0,0.0);
+        Toast.makeText(this, "Searching for " + SearchResult.getVendor() , Toast.LENGTH_SHORT).show();
         return true;
     }
 
@@ -83,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //could be used to string match from top 100 most searched items.
         return false;
     }
+
+    public void addToCart (View view){
+        //link this method to "add to cart" button on list view card
+        //This method should make a firebase call to currentUser to add to collection
+    }
+
 
     //could just change to public static and make a class that has all the FireAuth methods in one place...
     private void createSignInIntent() {
@@ -101,17 +100,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         startActivityForResult(intent, RC_SIGN_IN);
     }
 
-    public void signOut(View view){
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // ...
 
-                        createSignInIntent();
-                    }
-                });
-    }
     public void shoppingCart(View view){
         startActivity(new Intent(getApplicationContext(),ShoppingCart.class));
     }

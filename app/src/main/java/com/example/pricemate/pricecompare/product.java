@@ -17,5 +17,8 @@ public class product {
         this.price = price;
         this.rating = rating;
     }
+    public String getVendor(){
+        return this.vendor;
+    }
 
 }
