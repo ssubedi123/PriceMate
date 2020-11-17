@@ -31,8 +31,9 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
         TextView userDisplayText = (TextView) findViewById(R.id.userDisplayName);
-
+        TextView userShoppingCartTotal = (TextView) findViewById(R.id.userShoppingCartTotal);
         userDisplayText.setText(getCurrentUserUsername());
+        userShoppingCartTotal.setText(getCurrentUserShoppingCartTotal());
 
     }
     //createSignInIntent will be moved to a db class that will have these for them
@@ -87,6 +88,11 @@ public class ShoppingCart extends AppCompatActivity {
         shoppingCartDisplayString = currentUserUsername + "'s Shopping Cart";
         return shoppingCartDisplayString;
 
+    }
+    private String getCurrentUserShoppingCartTotal(){
+        String currentUserShoppingCartTotal = "100";
+        //after making calls to FireBase, sum the users shopping cart.
+        return "$" + currentUserShoppingCartTotal;
     }
 
 }
