@@ -2,6 +2,7 @@
     <string name="app_name">Price Mate</string>
     <string name="sign_out">Sign Out</string>
     <string name="shopping_cart">Shopping Cart</string>
-    <string name="total">Total</string>
+    <string name="total">Total:</string>
     <string name="checkout">Check Out</string>
+    <string name="search_hint">Search For Products</string>
 </resources>
