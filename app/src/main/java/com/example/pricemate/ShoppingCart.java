@@ -90,9 +90,13 @@ public class ShoppingCart extends AppCompatActivity {
 
     }
     private String getCurrentUserShoppingCartTotal(){
-        String currentUserShoppingCartTotal = "100";
+        String currentUserShoppingCartTotal = "0.00";
         //after making calls to FireBase, sum the users shopping cart.
         return "$" + currentUserShoppingCartTotal;
+    }
+
+    public void checkingOut(View view){
+        startActivity(new Intent(getApplicationContext(),CheckOut.class));
     }
 
 }
