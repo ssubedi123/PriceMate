@@ -16,7 +16,6 @@
         android:fontFamily="@font/suez_one"
         android:gravity="center"
         android:text="Home Page"
-        android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -43,7 +42,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="#E4ECBA"
-        android:backgroundTint="#E4ECBA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBar">

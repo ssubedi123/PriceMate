@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Intent intent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setTheme(R.style.LoginTheme)
                 .setLogo(R.drawable.mates)
                 .build();
 
