@@ -1,5 +1,6 @@
 package com.example.pricemate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         itemSearchView = (SearchView) findViewById(R.id.searchBar);
         itemSearchView.setOnQueryTextListener(this);
         buy = findViewById(R.id.buy);
-        buy1 = findViewById(R.id.buy2);
+        buy1 = findViewById(R.id.buy1);
 
 
         buy.setOnClickListener(new View.OnClickListener() {
@@ -109,4 +112,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     //method needs to changed to product list List<product>
     //also might need a helper method to correct strings so that exact matches are not required
 
+    public void signOut(View view){
+
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        createSignInIntent();
+                    }
+                });
+    }
+
 }
+
