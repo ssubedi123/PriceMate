@@ -1,6 +1,6 @@
 package com.example.pricemate;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -10,25 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.pricemate.pricecompare.apiCalls;
-import com.ebay.api.client.auth.oauth2.OAuthService;
-import com.ebay.api.client.auth.oauth2.model.ApiConfiguration;
-import com.ebay.api.client.auth.oauth2.model.ApiEnvironment;
-import com.ebay.api.client.auth.oauth2.model.ApiSessionConfiguration;
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.JsonObject;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,22 +24,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     SearchView itemSearchView;
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private RequestQueue queue;
-    apiCalls apiCallForMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        itemSearchView = findViewById(R.id.searchBar);
+        itemSearchView = (SearchView) findViewById(R.id.searchBar);
         itemSearchView.setOnQueryTextListener(this);
         buy = findViewById(R.id.buy);
-        buy1 = findViewById(R.id.buy2);
-        queue = Volley.newRequestQueue(this);
-        apiCallForMain = new apiCalls(MainActivity.this);
+        buy1 = findViewById(R.id.buy1);
 
-        //This is where we initialize everything for the ebay OAuth
-        //ApiSessionConfiguration.Companion.initialize()
+
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
 
-
+    //may have to use this instead https://www.geeksforgeeks.org/android-searchview-with-example/
     @Override
     protected void onStart() {
         super.onStart();
@@ -86,17 +67,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
     @Override
     public boolean onQueryTextSubmit(String query){
-
+        //searchForItem(query);
         //Can include the API call functions here
-        //StringRequest stringRequest = apiCallForMain.searchNameStringRequestForEbay(query,"Benjamin-PriceMat-SBX-47cf12021-a56ab0f6","Benjamin_Kim-Benjamin-PriceM-nmmgne","https://api.ebay.com/oauth/api_scope","https://auth.sandbox.ebay.com/oauth2/authorize?client_id=");
-        StringRequest weatherStringRequest = apiCallForMain.searchNameStringRequestForOpenWeather(query, getResources().getString(R.string.open_weather_api_key));
-        //product SearchResult = new product(0,query, 0.0,0.0);
-
-        //queue does not currently work with ebay
-        //queue.add(stringRequest);
-        //weather example
-        queue.add(weatherStringRequest);
-        Toast.makeText(this, "Searching for " + query + "'s temperature" , Toast.LENGTH_SHORT).show();
+        product SearchResult = new product(0,query, 0.0,0.0);
+        Toast.makeText(this, "Searching for " + SearchResult.getVendor() , Toast.LENGTH_SHORT).show();
         return true;
     }
 
@@ -106,13 +80,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return false;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void addToCart (View view){
+        //link this method to "add to cart" button on list view card
+        //This method should make a firebase call to currentUser to add to collection
     }
-
-
-
 
 
     //could just change to public static and make a class that has all the FireAuth methods in one place...
@@ -140,9 +111,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     // identifier for products?
     //method needs to changed to product list List<product>
     //also might need a helper method to correct strings so that exact matches are not required
-    public void goToEbay(View View){
-        startActivity(new Intent(getApplicationContext(),OauthRedirectActivity.class));
+
+    public void signOut(View view){
+
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        createSignInIntent();
+                    }
+                });
     }
 
-
 }
+

@@ -1,312 +1,461 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayput"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/suez_one"
         android:gravity="center"
-        android:text="Welcome"
+        android:text="Home Page"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textSize="25dp" />
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchBar"
-        android:title="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp" />
-    <androidx.cardview.widget.CardView
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:title="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:cardBackgroundColor="#e4ecba"
-        app:cardCornerRadius="10dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#E4ECBA"
+        android:backgroundTint="#E4ECBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+
         <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
+            android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/watch"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/watch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
-            android:text="Name"
+            android:text="Brand"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/product"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/product"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="Product"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/status"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="Price"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/greatdeal"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="Status"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/price"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/appwatch"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="190dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="Apple Watch"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toEndOf="@+id/product" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/apple"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="Apple"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/brand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/brand" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/cost"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="$349"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.037"
+            app:layout_constraintStart_toEndOf="@+id/price" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/stat1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/anaheim"
             android:gravity="center"
             android:text="New"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintStart_toEndOf="@+id/status" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/greatdeal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/suez_one"
             android:gravity="center"
             android:text="Great Deal"
             android:textColor="#000000"
-            android:textSize="18dp" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buy"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/amazon" />
+
         <Button
-            android:layout_width="80dp"
-            android:layout_height="25dp"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="300dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/signupbtn"
-            android:text="Buy"
             android:id="@+id/buy"
-            android:textSize="15dp"
-            />
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ama2"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="50dp" />
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:cardBackgroundColor="#e4ecba"
-        app:cardCornerRadius="10dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/watch1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Name"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Product"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="90dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Price"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="125dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Status"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="190dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Apple Watch"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="Apple"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="90dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="$400"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="125dp"
-            android:fontFamily="@font/anaheim"
-            android:gravity="center"
-            android:text="New"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:fontFamily="@font/suez_one"
-            android:gravity="center"
-            android:text="Fair Deal"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-        <Button
             android:layout_width="80dp"
             android:layout_height="25dp"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="300dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/signupbtn"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/fui_bgTwitter"
             android:text="Buy"
-            android:id="@+id/buy2"
             android:textSize="15dp"
-            />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ebay"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="50dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/greatdeal" />
 
-    </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/amazon"
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/ama2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/greatdeal"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="product,brand,status,price"
+            tools:layout_editor_absoluteX="174dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="141dp"
-        android:layout_marginBottom="17dp"
-        android:onClick="shoppingCart"
-        android:text="@string/shopping_cart" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="signOut"
+        android:text="@string/sign_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button6"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp"
-        android:onClick="goToEbay"
-        android:text="@string/ebay_button" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:onClick="shoppingCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shoppingcart" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="#E4ECBA"
+        android:backgroundTint="#E4ECBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/watch1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/brand1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Brand"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/product1"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/product1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Product"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/status1"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/price1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Price"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fairdeal"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/status1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Status"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/price1"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/appwatch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Apple Watch"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/product1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toEndOf="@+id/product1" />
+
+        <TextView
+            android:id="@+id/apple1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="Apple"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/brand1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/brand1" />
+
+        <TextView
+            android:id="@+id/cost1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="$400"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/price1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.037"
+            app:layout_constraintStart_toEndOf="@+id/price1" />
+
+        <TextView
+            android:id="@+id/stat2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/anaheim"
+            android:gravity="center"
+            android:text="New"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/status1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@+id/status1" />
+
+        <TextView
+            android:id="@+id/fairdeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/suez_one"
+            android:gravity="center"
+            android:text="Fair Deal"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buy1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ebay" />
+
+        <Button
+            android:id="@+id/buy1"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/fui_bgTwitter"
+            android:text="Buy"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fairdeal" />
+
+        <ImageView
+            android:id="@+id/ebay"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/ebay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fairdeal"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="brand1,product1,price1,status1"
+            tools:layout_editor_absoluteX="174dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
