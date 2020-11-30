@@ -3,4 +3,4 @@ About Mobile marketplace app that conglomerates results from other marketplaces 
 
 Functions: The user should be able to distinguish the source of the listing. The user should be able to run a query on the results. The user should be able to go to the original listing. The user should be able to checkout from the app. [May have to change this if we rely heavily on webscrapers instead.] The user should be able to receive points for each transaction made through the app.
 
-Team Members: Pritish Ayer Kim Benjamin Leslye Morales Sudesh Subedi Sujan Bhattarai
+Team Members: Pritish Ayer Benjamin Kim Leslye Morales Sudesh Subedi Sujan Bhattarai
