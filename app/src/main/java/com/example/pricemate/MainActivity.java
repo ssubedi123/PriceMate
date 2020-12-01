@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 //onclick of an item being bought, it needs to be appended to current user's firestore document
                 //firebaseFirestore.collection("Users").document(user_id).set(data, {merge:true}) will probably look something like this
                 //require data but can use spoofed item ids to test.
-                Toast.makeText(MainActivity.this,"Item Bought",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Added to cart",Toast.LENGTH_SHORT).show();
             }
         });
         buy1 .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Item Bought",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Added to cart",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Intent intent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setTheme(R.style.LoginTheme)
+                .setTheme(R.style.AppTheme)
                 .setLogo(R.drawable.mates)
                 .build();
 

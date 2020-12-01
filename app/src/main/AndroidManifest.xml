@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".confirmation"></activity>
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -20,8 +20,7 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".CheckOut"></activity>
-
+        <activity android:name=".CheckOut" />
         <activity android:name=".ShoppingCart" /> <!-- <activity android:name=".Signup"></activity> -->
         <!-- <activity android:name=".Login" > -->
         <!-- <intent-filter> -->

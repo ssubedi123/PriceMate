@@ -7,14 +7,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="LoginTheme" parent="FirebaseUI">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:layout_marginBottom">40dp</item>
-    </style>
+    <!--
+   <style name="FirebaseUI.Button.AccountChooser.EmailButton">
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">70dp</item>
+       <item name="android:layout_gravity">center</item>
+       <item name="android:src">@drawable/ic_email1</item>
+   </style>
 
+   <style name="FirebaseUI.Button.AccountChooser.AnonymousButton">
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">70dp</item>
+       <item name="android:layout_gravity">center</item>
+       <item name="android:drawableRight">@drawable/ic_person1</item>
+   </style>
 
-
+    -->
+    
 </resources>
 

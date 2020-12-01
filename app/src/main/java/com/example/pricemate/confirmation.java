@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,17 +15,13 @@ import com.google.android.gms.tasks.Task;
 import java.util.Arrays;
 import java.util.List;
 
-public class CheckOut extends AppCompatActivity {
-    private static final int RC_SIGN_IN = 123;
 
+public class confirmation extends AppCompatActivity {
+    private static final int RC_SIGN_IN = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_out);
-    }
-
-    public void confirm(View view){
-        startActivity(new Intent(getApplicationContext(),confirmation.class));
+        setContentView(R.layout.activity_confirmation);
     }
 
     private void createSignInIntent() {

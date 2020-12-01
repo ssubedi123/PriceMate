@@ -87,7 +87,8 @@ public class Login extends AppCompatActivity {
                 .createSignInIntentBuilder()
                 .setIsSmartLockEnabled(false)
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.pricemate)
+                .setTheme(R.style.AppTheme)
+                .setLogo(R.drawable.mates)
                 .build();
 
         startActivityForResult(intent, RC_SIGN_IN);
