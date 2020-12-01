@@ -3,12 +3,15 @@ package com.example.pricemate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ListView;
+
 
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
@@ -16,14 +19,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    Button buy, buy1;
-    SearchView itemSearchView;
+
+    private SearchView itemSearchView;
+    private ListView searchResultsList;
+    private ArrayAdapter<String> resultsAdapter;
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
+    private ArrayList<String> searchResults;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,25 +38,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mAuth = FirebaseAuth.getInstance();
         itemSearchView = (SearchView) findViewById(R.id.searchBar);
         itemSearchView.setOnQueryTextListener(this);
-        buy = findViewById(R.id.buy);
-        buy1 = findViewById(R.id.buy1);
-
-
-        buy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //onclick of an item being bought, it needs to be appended to current user's firestore document
-                //firebaseFirestore.collection("Users").document(user_id).set(data, {merge:true}) will probably look something like this
-                //require data but can use spoofed item ids to test.
-                Toast.makeText(MainActivity.this,"Item Bought",Toast.LENGTH_SHORT).show();
-            }
-        });
-        buy1 .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Item Bought",Toast.LENGTH_SHORT).show();
-            }
-        });
+        searchResults= new ArrayList<>();
+        resultsAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, searchResults);
+        searchResultsList = (ListView) findViewById(R.id.searchResultsList);
+        searchResultsList.setAdapter(resultsAdapter);
+        //Initializes with no items, will be using cardview/listview to populate a scrollable page
     }
 
 
@@ -69,8 +63,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextSubmit(String query){
         //searchForItem(query);
         //Can include the API call functions here
+        searchResults.add(query);
         product SearchResult = new product(0,query, 0.0,0.0);
-        Toast.makeText(this, "Searching for " + SearchResult.getVendor() , Toast.LENGTH_SHORT).show();
+        //instead of Toast we now populate the listview
+
         return true;
     }
 
