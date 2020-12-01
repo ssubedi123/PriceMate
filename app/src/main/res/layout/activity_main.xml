@@ -12,26 +12,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/suez_one"
         android:gravity="center"
         android:text="Home Page"
         android:textColor="#000000"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
         android:title="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,18 +60,69 @@
         android:onClick="shoppingCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
+        android:scaleType="fitStart"
         app:srcCompat="@drawable/shoppingcart" />
 
-    <ListView
-        android:id="@+id/searchResultsList"
-        android:layout_width="338dp"
-        android:layout_height="558dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchResultCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/person_photo"
+                android:layout_width="199dp"
+                android:layout_height="189dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/amazon" />
+
+            <TextView
+                android:id="@+id/person_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="77dp"
+                android:layout_toEndOf="@+id/person_photo"
+                android:text="@string/app_name"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/person_age"
+                android:layout_width="58dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/person_name"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/person_photo"
+                android:text="12" />
+
+            <Button
+
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/person_age"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="33dp"
+                android:layout_toEndOf="@+id/person_photo"
+                android:onClick="addToCart"
+                android:text="@string/add_to_cart" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
