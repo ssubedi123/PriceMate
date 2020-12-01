@@ -1,17 +1,13 @@
 package com.example.pricemate;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
@@ -19,18 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private SearchView itemSearchView;
-    private ListView searchResultsList;
-    private ArrayAdapter<String> resultsAdapter;
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private ArrayList<String> searchResults;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,16 +31,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mAuth = FirebaseAuth.getInstance();
         itemSearchView = (SearchView) findViewById(R.id.searchBar);
         itemSearchView.setOnQueryTextListener(this);
-        searchResults= new ArrayList<>();
-        resultsAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, searchResults);
-        searchResultsList = (ListView) findViewById(R.id.searchResultsList);
-        searchResultsList.setAdapter(resultsAdapter);
+
+
         //Initializes with no items, will be using cardview/listview to populate a scrollable page
     }
 
-
-    //may have to use this instead https://www.geeksforgeeks.org/android-searchview-with-example/
     @Override
     protected void onStart() {
         super.onStart();
@@ -63,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onQueryTextSubmit(String query){
         //searchForItem(query);
         //Can include the API call functions here
-        searchResults.add(query);
+        //transforming the view so that I can display a bunch of cards
         product SearchResult = new product(0,query, 0.0,0.0);
         //instead of Toast we now populate the listview
 
@@ -77,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     public void addToCart (View view){
-        //link this method to "add to cart" button on list view card
+        Toast.makeText(this, "Adding to Cart" , Toast.LENGTH_LONG).show();
+
         //This method should make a firebase call to currentUser to add to collection
     }
 
