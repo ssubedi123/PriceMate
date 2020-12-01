@@ -85,6 +85,7 @@ public class Login extends AppCompatActivity {
                 new AuthUI.IdpConfig.AnonymousBuilder().build());
         Intent intent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
+                .setIsSmartLockEnabled(false)
                 .setAvailableProviders(providers)
                 .setLogo(R.drawable.pricemate)
                 .build();
@@ -92,16 +93,7 @@ public class Login extends AppCompatActivity {
         startActivityForResult(intent, RC_SIGN_IN);
     }
 
-    public void signOut(View view){
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // ...
-                        createSignInIntent();
-                    }
-                });
-    }
+
 
 
 }
