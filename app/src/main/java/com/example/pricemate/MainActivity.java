@@ -8,39 +8,62 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pricemate.pricecompare.CustomAdapter;
 import com.example.pricemate.pricecompare.product;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private SearchView itemSearchView;
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-
+    private FirebaseFirestore db;
+    private List<product> productList= new ArrayList<>();
+    private CustomAdapter adapter;
+    private LinearLayoutManager linearLayoutManager;
+    private RecyclerView mList;
+    private DividerItemDecoration dividerItemDecoration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mAuth = FirebaseAuth.getInstance();
+        mList = findViewById(R.id.main_list);
+
         itemSearchView = (SearchView) findViewById(R.id.searchBar);
         itemSearchView.setOnQueryTextListener(this);
+        adapter = new CustomAdapter(getApplicationContext(), productList, mAuth,db);
 
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        dividerItemDecoration = new DividerItemDecoration(mList.getContext(), linearLayoutManager.getOrientation());
 
-        //Initializes with no items, will be using cardview/listview to populate a scrollable page
+        mList.setHasFixedSize(true);
+        mList.setLayoutManager(linearLayoutManager);
+        mList.addItemDecoration(dividerItemDecoration);
+        mList.setAdapter(adapter);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //there is a login loop because it happens whenever it starts but never leaves, learn more
-        //about Android life cycle to break this.
 
         if(FirebaseAuth.getInstance().getCurrentUser() == null){
             createSignInIntent();
@@ -52,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //searchForItem(query);
         //Can include the API call functions here
         //transforming the view so that I can display a bunch of cards
-        product SearchResult = new product(0,query, 0.0,0.0);
+        product SearchResult = new product("Used", query,Math.random(),Math.random());
+        productList.add(SearchResult);
         //instead of Toast we now populate the listview
 
         return true;
@@ -65,17 +89,21 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     public void addToCart (View view){
+        //add User to Firebase before adding item to cart.
+        Map<String, String> data = new HashMap<>();
+        data.put("email", mAuth.getCurrentUser().getEmail());
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).set(data,SetOptions.merge());
+        //add Item to cart that belongs to User.
+        //db.collection("users").document(mAuth.getCurrentUser().getUid()).collection("cart").document(product.getItemTitle());
         Toast.makeText(this, "Adding to Cart" , Toast.LENGTH_LONG).show();
 
         //This method should make a firebase call to currentUser to add to collection
     }
 
 
-    //could just change to public static and make a class that has all the FireAuth methods in one place...
+
     private void createSignInIntent() {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers, Facebook and Twitter and special additional requirements
-        // in gradle so don't forget to add
+
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.AnonymousBuilder().build());
@@ -93,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public void shoppingCart(View view){
         startActivity(new Intent(getApplicationContext(),ShoppingCart.class));
     }
-    //need to create methods that push from "buy" to the user's shopping cart on firestore,
-    // identifier for products?
-    //method needs to changed to product list List<product>
-    //also might need a helper method to correct strings so that exact matches are not required
 
     public void signOut(View view){
 
